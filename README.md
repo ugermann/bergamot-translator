@@ -28,7 +28,7 @@ To compile WASM, first download and Install Emscripten using following instructi
 After the successful installation of Emscripten, perform these steps:
 
 ```bash
-git clone https://github.com/browsermt/bergamot-translator -b wasm
+git clone https://github.com/browsermt/bergamot-translator
 cd bergamot-translator
 mkdir build-wasm
 cd build-wasm
