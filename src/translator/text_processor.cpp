@@ -29,8 +29,7 @@ void TextProcessor::process(const string_view &query, Segments &segments,
                             SentenceRanges &sourceRanges) {
 
   auto sentenceStream = sentence_splitter_.createSentenceStream(query);
-  std::string_view sentenceStringPiece;
-
+  pcrecpp::StringPiece sentenceStringPiece;
   while (sentenceStream >> sentenceStringPiece) {
     marian::string_view sentence(sentenceStringPiece.data(),
                                  sentenceStringPiece.size());

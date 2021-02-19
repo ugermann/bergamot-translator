@@ -4,6 +4,8 @@
 #include "common/options.h"
 #include <string>
 
+#include <pcrecpp.h>
+
 namespace marian {
 namespace bergamot {
 
@@ -30,7 +32,7 @@ SentenceSplitter::SentenceSplitter(marian::Ptr<marian::Options> options)
 
 ug::ssplit::SentenceStream
 SentenceSplitter::createSentenceStream(const string_view &input) {
-  std::string_view input_converted(input.data(), input.size());
+  pcrecpp::StringPiece input_converted(input.data(), input.size());
   return std::move(
       ug::ssplit::SentenceStream(input_converted, this->ssplit_, mode_));
 }
