@@ -29,6 +29,9 @@ if(COMPILE_WASM)
   SET(WORMHOLE ON CACHE BOOL "Use WASM wormhole in intgemm https://bugzilla.mozilla.org/show_bug.cgi?id=1672160")
 endif()
 
+# Ssplit
+SET(USE_INTERNAL_PCRE2 ON CACHE BOOL "Compile with INTERNAL_PCRE")
+
 # Documentation: https://cliutils.gitlab.io/modern-cmake/chapters/projects/submodule.html
 # Ensures the submodules are set correctly during a build.
 find_package(Git QUIET)
