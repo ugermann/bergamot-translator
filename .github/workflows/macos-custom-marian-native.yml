@@ -1,0 +1,32 @@
+name: MacOS
+
+on:
+  push:
+    branches: [ ci-custom-marian ]
+  pull_request:
+    branches: [ ci-custom-marian ]
+
+jobs:
+  build-macos:
+    name: Native (With Custom Marian)
+    runs-on: macos-10.15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Configure CMake
+        run: |
+          mkdir -p build-native
+          cd build-native
+          cmake ..
+
+      - name: Compile
+        working-directory: build-native
+        run: make -j2
+
+      - name: Print versions
+        working-directory: build-native
+        run: ./app/bergamot-translator-app --version
